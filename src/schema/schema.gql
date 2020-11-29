@@ -1,0 +1,22 @@
+type Company @collection(name: "company") {
+  name: String! @unique
+}
+
+type Client @collection(name: "client") {
+  name: String! @unique
+  balance: Int!
+}
+
+type Transaction {
+  client: Client! @relation
+  company: Company! @relation
+  narration: String
+  credit: Float!
+  debit: Float!
+  date: Time
+}
+
+type Query {
+  companies: [Company!]!
+  clients: [Client!]!
+}
